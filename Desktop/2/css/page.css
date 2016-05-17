@@ -1,0 +1,45 @@
+.dede_pages {
+	clear: both;
+	overflow: hidden;
+	margin-top: 50px;
+}
+.dede_pages ul {
+	float: right;
+}
+.dede_pages ul li {
+	float: left;
+	font-family: Tahoma;
+	line-height: 34px;
+	margin-right: 6px;
+	border: 1px solid #E9E9E9;
+	padding: 0 10px;
+	color: #fb6c14;
+}
+.dede_pages ul li a {
+	float: left;
+	padding: 0px 4px;
+	margin-left: 0px;
+	color: #fb6c14;
+	display: block;
+}
+.dede_pages ul li:hover{
+	border: 1px solid #fb6c14;
+}
+.dede_pages ul li.thisclass{
+	background-color: #fb6c14;
+	border: 1px solid #fb6c14;
+	color: #fff;
+	padding: 0 14px;
+}
+.dede_pages ul li.thisclass a{
+	color: #fff;
+}
+.dede_pages .pageinfo {
+	padding: 0px 15px;
+	color: #999;
+}
+.dede_pages .pageinfo strong {
+	color: #555;
+	font-weight: normal;
+	margin: 0px 2px;
+}

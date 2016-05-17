@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--O2O运营</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(3).find("a").addClass("navThis");
+	$(".navInfo li").eq(3).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>盈利模式</span><span class="englishAddress">MODEL</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">盈利模式</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	<li><a href="yinglimoshi.html">盈利模式</a></li>
+                {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--O2O运营-->
+        <div class="o2o">
+            <h2 id="companyTitle">O2O运营</h2>
+            <p class="o2oTitle">线上线下同时卖货，24小时自动吸金</p>
+            <p class="o2o1">帝诗卡特进口商品总汇谋势而动，致力打造线上线下一体化的O2O全渠道营销模式，整合线上线下资源，将网上商城植入线下门店，使总部、消费者、专营店三者高效串联，既可让消费者线上下单，享受线下送货和体验服务（利润属于门店），又能通过商品更为丰富的线上平台，为消费者提供更多选择；并且商品来源轻松可查，正品保障清晰明了，为顾客创造全新的   O2O模式购物体验，为门店打造强大的全渠道盈利能力和顾客粘性，线上线下同时卖货，24小时自动吸金。</p>
+            <p class="o2o1">当前，帝诗卡特进口商品会员店已达数百家，门店遍布全国各地，可以说线下的发展已初具规模，在互联网经济日愈成熟的今天，如何将这些资源整合到线上，形成线上线下的全网营销，成为帝诗卡特进口商品转型的一大亮点，这也是帝诗卡特实施O2O战略的核心内容，为此而推出的网上商城无疑成为这一战略的绝佳平台</p>
+            <p class="o2oPic"><img src="{dede:global.cfg_templets_skin/}/images/model/020_1.jpg" width="635" height="380"></p>
+            <p class="o2oTitle2">帝诗卡特商城核心功能模块</p>
+            <p>帝诗卡特投入巨大的人力、物力、财力，自主开发系统，并结合时下流行的网购形式，打造多渠道、多形式的商城平台，迎合消费者追求快、省、好的需求，最大限度帮助门店拓客盈利。</p>
+            <p class="o2oTitle2">全品类销售，全线覆盖消费需求</p>
+            <p>相比较传统实体店有限的门面空间，帝诗卡特打造的在线商城解决了售卖品类受空间大小限制的局限，打通门店、总部、供应商、厂商的无缝连接，实现全品类销售，全线覆盖消费所需，极大地提升了网民顾客的选购体验。</p>
+            <p class="o2oTitle2">全网订单共享，会员共享</p>
+            <p>同时，帝诗卡特通过技术手段，对各平台的商城订单数据进行汇总，并实现资源共享，也即是，每一家门店都可以共享到商城上的订单收益及会员收益，总部商城系统会根据会员下单所在地，这一订单分配给就近门店，由门店进行配送，并获得相应收益。</p>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

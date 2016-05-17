@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--跨境购</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(3).find("a").addClass("navThis");
+	$(".navInfo li").eq(3).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>盈利模式</span><span class="englishAddress">MODEL</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">盈利模式</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	<li><a href="./">盈利模式</a></li>
+                {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--跨境购-->
+        <div class="crossBorder">
+            <h2 id="companyTitle">跨境购体验店</h2>
+            <p class="crossBorderTitle">跨境购体验店</p>
+            <p>帝诗卡特跨境购实行线上销售、线下展示模式，线下门店设有跨境购体验专区，仅摆放展示样品，并配有商品信息卡。</p>
+            <p>帝诗卡特会员自行或在线下门店工作人员帮助下进入帝诗卡特跨境购电商网站直接下单即可。</p>
+            <p>帝诗卡特会员在收到商品时,还能收到发货单、邮寄单和海关清单,保证正品。</p>
+            <p class="crossBorderPic"><img src="{dede:global.cfg_templets_skin/}/images/model/crossBorder_01.jpg" width="846" height="218"></p>
+            <p class="crossBorderTitle">跨境购4大优势</p>
+            <div class="crossBorder2">
+            	<dl>
+                	<dt>价格优惠30%以上</dt>
+                    <dd>帝诗卡特跨境购进口业务缴纳的行邮税相比一般贸易进口的"关税+增值税+消费税"等的综合税负要优惠到30%左右，<span>价格比市场价格便宜3—6成。</span></dd>
+                </dl>
+                <dl>
+                	<dt>全程阳光，杜绝假货</dt>
+                    <dd>帝诗卡特跨境购商品的进口、检验检疫、销售整个环节，经历全程信息化监管，数据更真实，<span>产品可以溯源 ，商品的品质得到了保障，消费者的权益得到保护。</span></dd>
+                </dl>
+                <dl>
+                	<dt>发货速度快且合法</dt>
+                    <dd>帝诗卡特跨境购实行集中采购，商品直接储存在海关保税仓库，物流公司可直接配送，比传统海淘的<span>发货速度提升3—5倍；</span>且全程遵守国家相关规定通关完全合法。</dd>
+                </dl>
+                <dl>
+                	<dt>品类齐全</dt>
+                    <dd>帝诗卡特跨境购商品包括母婴用品(尤其是奶粉)、食品、服装、箱包、家纺、家具、饰品、化妆品、艺术品、奢侈品等。</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

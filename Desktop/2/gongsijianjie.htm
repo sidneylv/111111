@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--公司简介</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(6).find("a").addClass("navThis");
+	$(".navInfo li").eq(6).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>关于帝诗卡特</span><span class="englishAddress">ABOUT</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">关于帝诗卡特</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	{dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--公司简介-->
+        <div class="companyInfo">
+            <h2 id="companyTitle">从品牌背后看营销</h2>
+            <p>1927年，Seven-Eleven诞生于美国，后崛起于日本，成为享誉全球的连锁便利店巨头。其实早在1916年，英国已相继出现了连锁便利店模式的雏形。当时正处于一战时期，一个名叫Ashbur Carter的零售商为了吸引客户以应对经济危机，开设了3家discount（帝诗卡特）连锁便利店，并且创立了会员＋折扣＋连锁的新型经营模式，由此可见，Ashbur Carter创立discount（帝诗卡特）品牌初衷所涵盖的释义就是"折扣"。</p>
+            <p>经过近百年的发展，帝诗卡特在欧洲形成了三千多家店的连锁经营规模，已在全球100多个国家设立了直采机构，具备了强大的全球采购能力。</p>
+            <p>2008年，帝诗卡特将亚太总部设立在香港，成立了香港帝诗卡特股份有限公司。经过两年多的发展，2010年，帝诗卡特落户于上海，成立了上海帝狄进出口有限公司，作为中国大陆运营中心，全力拓展中国市场。帝诗卡特作为供货商，先后与全国800余家大中型零售企业形成了长期的战略合作伙伴关系。</p>
+            <p>随着多年的沉淀积累，帝诗卡特调整品牌战略，于2015年重拳出击，运用先进的O2O全渠道模式，启动了进口商品折扣店连锁加盟业务，布局深远，大力扩展国内业务，凭借跨国企业的雄厚实力，已成为业界翘楚。</p>
+            <p>李克强总理在出席中马经济高层论坛时表示，中国将继续扩大对外开放，更深融入世界经济，预计未来5年中国进口商品会达到10万亿美元。鉴于进口商品巨大的内需市场，公司成立旗下品牌"帝诗卡特"，集高端连锁、O2O、诸多创新优势进驻国内市场，推出"整店输出"的模式服务加盟商。</p>
+            <div class="companyPic">
+            	<p class="companyPicleft"><img src="{dede:global.cfg_templets_skin/}/images/about/company_01.jpg" width="546" height="481"/></p>
+                <p class="companyPicright"><img src="{dede:global.cfg_templets_skin/}/images/about/company_02.jpg" width="295" height="222"/><img src="{dede:global.cfg_templets_skin/}/images/about/company_03.jpg" width="295" height="222"><img src="{dede:global.cfg_templets_skin/}/images/about/company_04.jpg" width="241" height="252"><img src="{dede:global.cfg_templets_skin/}/images/about/company_05.jpg" width="347" height="252"></p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

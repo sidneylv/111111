@@ -1,0 +1,82 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--产品详情</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(1).find("a").addClass("navThis");
+	$(".navInfo li").eq(1).siblings().removeClass("navThis");
+})
+</script>
+</head>
+<body>
+{dede:include filename="header.htm"/}
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>产品中心</span><span class="englishAddress">PRODUCTS</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">产品中心</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav thisMoreNav">
+            	{dede:channel type='son' currentstyle="<li class="htmlthisNav">~typename~</li>"}
+                <li>[field:typename/]</li>
+				{/dede:channel}	
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<div class="productTital text1Text">
+        	<dl>
+                <dt><img src="{dede:global.cfg_templets_skin/}/images/chanpinzhongxin/1.jpg" /></dt>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+            </dl>
+            <div class="productText">
+            	<p class="productText1">泰国进口果汁饮料纯椰子汁</p>
+                <p>厂名：Siam Mud Muk company Limited</p>
+                <p>厂址：泰国</p>
+                <p>厂家联系方式：66-839885918</p>
+                <p>配料表：100%纯椰子水</p>
+                <p>储藏方法：阴凉、避光</p>
+                <p>保质期：720 天</p>
+                <p>食品添加剂：无</p>
+            </div>
+        </div>
+        <div class="productthisInfo">
+        	<h3 class="text2Tatle">详细描述</h3>
+            <div class="productPic">
+            	<img src="{dede:global.cfg_templets_skin/}/images/chanpinzhongxin/productInfo_01.jpg" width="791" height="620">
+                <img src="{dede:global.cfg_templets_skin/}/images/chanpinzhongxin/productInfo_02.jpg" width="791" height="402">
+                <img src="{dede:global.cfg_templets_skin/}/images/chanpinzhongxin/productInfo_03.jpg" width="791" height="802">
+            </div>
+        </div>
+        <div class="lick text1Text2">
+        	<h3 class="text2Tatle">猜你喜欢的</h3>
+        	<dl>
+			 {dede:arclist typeid='2' row='3'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			 {/dede:arclist}
+            </dl> 
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+ 
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--新闻详情</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(5).find("a").addClass("navThis");
+	$(".navInfo li").eq(5).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>新闻动态</span><span class="englishAddress">NEWS</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">新闻动态</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	<li class="htmlthisNav">公司新闻</li>
+                <li>行业新闻</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<div class="newInfo">
+            <div class="newsInfoLeft">
+            	<h2 class="timeDay">29</h2>
+                <p class="timeMore">2016-03</p>
+                <p class="linkMore">
+                	<span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_01.jpg"></span>
+                    <span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_02.jpg"></span>
+                    <span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_03.jpg"></span>
+                    <span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_04.jpg"></span>
+                    <span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_05.jpg"></span>
+                    <span><img src="{dede:global.cfg_templets_skin/}/images/news/newsInfo_06.jpg"></span>
+                </p>
+                <p class="returnNewsBox"><a href="xinwendongtai.html" class="returnNews">&gt;返回列表</a></p>
+            </div>
+            <div class="newsInfoRight">
+			{dede:field.body/}
+            </div>
+        </div>   
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 -->  
+</body>
+</html>

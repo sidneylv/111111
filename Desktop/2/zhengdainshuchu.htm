@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--整店输出模式</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(2).find("a").addClass("navThis");
+	$(".navInfo li").eq(2).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资优势</span><span class="englishAddress">ADVANTAGES</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资优势</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	 {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--整店输出模式-->
+        <div class="storeOutput">
+            <h2 id="companyTitle" style="color:#dd0330">“整店输出”模式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>MODEL OF ONE-STOP SHOP<br/>整店输出，最短5天交付  标准运营，拎包即可开店</span></h2>
+            <div class="storeOutput1">
+            	<p class="storeOutputLeft"><img src="{dede:global.cfg_templets_skin/}/images/advantages/storeOutput_01.jpg" width="445" height="331"></p>
+                <div class="storeOutputRight">
+                	<p class="storeOutputTitle">帝诗卡特采用统一的"整店输出"合作经营模式</p>
+                    <p>只要根据帝诗卡特的专业建议确定优选店铺，再按品牌装修风格做简单的框架装修，最快5天即可完成。总部将按不同规格，提供开店所需物品并配送相应数量商品：从收银机、X展架、工服、会员卡等
+物料配送齐全,您直接可以开门营业。</p>
+                </div>
+            </div>
+            <div class="storeOutput2">
+            	<img src="{dede:global.cfg_templets_skin/}/images/advantages/storeOutput_02.jpg" width="395" height="267"><img src="{dede:global.cfg_templets_skin/}/images/advantages/storeOutput_03.jpg" width="394" height="267" class="storeOutput2cent"><img src="{dede:global.cfg_templets_skin/}/images/advantages/storeOutput_04.jpg" width="393" height="267">
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--企业文化</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(6).find("a").addClass("navThis");
+	$(".navInfo li").eq(6).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>关于帝诗卡特</span><span class="englishAddress">ABOUT</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">关于帝诗卡特</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            		<ul class="thishtmlNav">
+            	{dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+        <!--企业文化-->
+        <div class="companyCulture">
+            <h2 id="companyTitle">品牌文化</h2>
+            <div class="companyCultureInfo">
+            	<p class="companyCultureTitle">帝诗卡特宗旨：</p>
+                <p><img src="{dede:global.cfg_templets_skin/}/images/about/companyCulture_01.jpg" width="360" height="224"><img src="{dede:global.cfg_templets_skin/}/images/about/companyCulture_02.jpg" width="360" height="224"><img src="{dede:global.cfg_templets_skin/}/images/about/companyCulture_03.jpg" width="361" height="224"></p>
+                <p>※个人收益与企业收益同步增长 </p>
+                <p>※个人收益与企业收益同步增长 </p>
+                <p>※个人收益与企业收益同步增长 </p>
+                <p>※个人收益与企业收益同步增长 </p>
+                <br/>
+                <p class="companyCultureTitle">帝诗卡特目标：</p>
+                <p>高品质、高服务、高收益、好品牌、大市场，我们的目标就是以我们的文化为底蕴，把世界精品引入国内，从而更好地为国人服</p>
+                <br/>
+                <p class="companyCultureTitle">帝诗卡特精神：</p>
+                <p>我为公司、公司为我、团结互助、携手共进，人人以公司为家，有着强烈的责任心、工作激情和无私忘我的敬业精神服务好每一位客户。</p>
+                <br/>
+                <p class="companyCultureTitle">帝诗卡特经营理念：</p>
+                <p>品质和价格为本、服务至上、开拓创新、务实诚信。以投资者利益为首，在可控范围内通过对数据的精准分析保证利润最大增长。顾客的需求是信赖的表现，让顾客满意是我们的职责。以世界优质及完美体验的产品为根本，以顾客最终感受与需求为标尺，创新的把"完美生活"理念深入到每一个人心中。员工是我们最有价值的财富，智慧、创新、融合及其执行是我们共同的行为理念。一切尽在帝诗卡特，实现共荣共赢。</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

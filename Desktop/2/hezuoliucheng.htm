@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--合作流程</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(4).find("a").addClass("navThis");
+	$(".navInfo li").eq(4).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资合作</span><span class="englishAddress">COOPERATION</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资合作</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	{dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--合作流程-->
+        <div class="process">
+            <h2 id="companyTitle">合作流程</h2>
+            <div class="processInfo">
+            	<dl class="process1">
+                	<dt class="processleft">资讯</dt>
+                    <dd>咨询公司客服电话或在官方网站了解加盟事宜，洽谈合作意向；</dd>
+                </dl>
+                <dl class="process2">
+                	<dt class="processleft">申请</dt>
+                    <dd>申请填写《加盟申请表》，报给总部；</dd>
+                </dl>
+                <dl class="process3">
+                	<dt class="processleft">评估</dt>
+                    <dd>总部根据申请人提交的相关资料进行加盟资格评估；</dd>
+                </dl>
+                <dl class="process4">
+                	<dt class="processleft">洽谈</dt>
+                    <dd>评估通过后，来访上海总部，洽谈加盟具体事项，签订《加盟商合同》；</dd>
+                </dl>
+                <dl class="process5">
+                	<dt class="processleft">授权</dt>
+                    <dd>交纳费用，办理完相应手续，得到总部授权；</dd>
+                </dl>
+                <dl class="process6">
+                	<dt class="processright">装修</dt>
+                    <dd>按公司指定要求装修店铺和布置店内选定商品，配备导购员正式开业；</dd>
+                </dl>
+                <dl class="process7">
+                	<dt class="processright">服务</dt>
+                    <dd>将店铺相关资料传到总部建立跟踪服务；</dd>
+                </dl>
+                <dl class="process8">
+                	<dt class="processright">培训</dt>
+                    <dd>定期接受总部营销管理系统培训及总部后续支持与跟进。</dd>
+                </dl>
+            </div>
+        </div>
+        
+    </div>
+</div>
+ <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

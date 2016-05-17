@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--盈利模式</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(3).find("a").addClass("navThis");
+	$(".navInfo li").eq(3).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>盈利模式</span><span class="englishAddress">MODEL</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">盈利模式</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	<li><a href="./" class="htmlthisNav">盈利模式</a></li>
+                {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--盈利模式-->
+        <div class="model">
+            <h2 id="companyTitle">十大盈利来源、开启掘金模式、加盟商"钱景"无忧</h2>
+            <div class="modelText">
+            	<div class="modelLeft modeleft1">
+                	<h3>门店销售收益</h3>
+                    <p>线下实体门店以会员+折扣形式进行销售。</p>
+                    <h3>微店订单收益</h3>
+                    <p>门店运用微店进行产品展示和销售，会员可以线上订购商品、线 下由总部发货。</p>
+                    <h3>线上商城会员订单收益</h3>
+                    <p>总部拥有独立运营的线上商城，会员在线上商城订购商品产生的销售收益，所属门店可获得利润分成。</p>
+                    <h3>线上商城非会员订单收益</h3>
+                    <p>总部线上商城具备强大的推广和集客能力，吸引客户在线订购后，<br />所产生的订单收益会随即分配给所属区域的门店，由门店在线下完成会员注册。</p>
+                    <h3>跨境购收益</h3>
+                    <p>门店设有跨境购体验专区，会员线下体验、线上订购，总部直接从保税仓库发货给消费者。</p>
+                </div>
+                <p class="modelRight  moderight1">
+                	<img src="{dede:global.cfg_templets_skin/}/images/model/model_01.jpg" width="431" height="406">
+                </p>
+            </div>
+            <div class="modelText">
+            	<p class="modelLeft modeleft2">
+                	<img src="{dede:global.cfg_templets_skin/}/images/model/model_02.jpg" width="526" height="520">
+                </p>
+                <div class="modelRight moderight2">
+                	<h3>渠道分销收益</h3>
+                    <p>发展分销商，或向商超等流通渠道进行供货。</p>
+                    <h3>团购收益</h3>
+                    <p>大力开发团购和礼品采购业务。</p>
+                    <h3>加盟店拓展奖励收益</h3>
+                    <p>为扩大连锁经营范围，总部鼓励加盟商和代理商在区域内或区域外介绍和发展加盟店，<br />总部给予相应丰厚奖励。</p>
+                    <h3>销售量达标奖励收益</h3>
+                    <p>总部制定相关激励政策，加盟商和代理商如完成销售任务，可获得额外奖金收益。</p>
+                    <h3>代理商区域收益</h3>
+                    <p>代理商拥有区域垄断性经营权，可获得进货折扣收益<br />（区域总进货量：包括所有自营店和加盟店产生的销量总合)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

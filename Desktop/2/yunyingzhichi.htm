@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--运营支持</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(4).find("a").addClass("navThis");
+	$(".navInfo li").eq(4).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资合作</span><span class="englishAddress">COOPERATION</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资合作</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+    	{dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--运营支持-->
+        <div class="operate">
+            <h2 id="companyTitle">运营支持</h2>
+            <div class="operate1">
+            	<div class="operateLeft">
+                	<h3>整店配送</h3>
+                    <p>根据专营店规模不同，公司总部提供开店所需的所有物料并配送一定数量的产品、设备及原材料，您只需将产品及物料配置好，即可开门营业；</p>
+                    <h3>选址评估</h3>
+                    <p>调查选址是成功开店最为关键的第一步。根据店面所在地的经济水平、商圈环境、人流量、竞争状况等，作出专业的选址分析与评估判断，从而锁定黄金店铺，赢在未来；</p>
+                    <h3>装修设计</h3>
+                    <p>根据专营店实际面积，总部量身设计装修方案，提供装修所需平面图、施工图、效果图和详细预算，并提供灯箱、形象灯片、店头灯饰等终端形象物料；</p>
+                    <h3>全面培训</h3>
+                    <p>提供店长、店员专业技能培训，从产品卖点、产品陈列、店务运营、导购技巧、经营管理到促销宣传等，注重实战和理论性结合，并安排学员到总部实操训练，强化技能；</p>
+                    <h3>巡店指导</h3>
+                    <p>总部设有专门的市场督导团队下店指导、培训，并在全国范围内不定期巡店，主动帮助专营店</p>
+                </div>
+                <div class="operateRight">
+                	<img src="{dede:global.cfg_templets_skin/}/images/cooperation/operate_01.jpg" width="530" height="351">
+                </div>
+            </div>
+            <div class="operate1">
+            	<div class="operateLeft">
+                	<img src="{dede:global.cfg_templets_skin/}/images/cooperation/operate_02.jpg" width="637" height="409">
+                </div>
+                <div class="operateRight">
+                	<h3>营销支持</h3>
+                    <p>提供整套专营店营销计划、销售疑难问答、产品咨询和管理解决方案，从专营店开张营业、节假日促销、会员促销到产品宣传，总部给予全方位的强大营销支持；</p>
+                    <h3>广告支持</h3>
+                    <p>总部与电视台、报刊杂志及门户网站建立了长期合作关系，提升品牌知名度；</p>
+                    <h3>电子商务</h3>
+                    <p>网民可在公司购物网站下单订购，公司再将定单交给网民所在地专营店，由专营店零售配给。通过官方网站的影响力，为专营店开发顾客，同时网民可在官方网站申请会员卡</p>
+                    <h3>店务运营</h3>
+                    <p>总部为专营店提供全套店务运营实施方案，包括店面日常管理制度、员工规章制度、店员应具备的顾客接待礼仪、产品知识、销售技巧和商品陈列知识等；</p>
+                    <h3>经营管理</h3>
+                    <p>为专营店提供ERP店铺管理系统，店面销售、网上订货、合理控制库存、会员制度、积分制度、促销方案、广告宣传、传单派发、工资设定、人员排班等涉及店面经营管理的具体实施方案。</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+ <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

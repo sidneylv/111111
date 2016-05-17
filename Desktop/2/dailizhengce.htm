@@ -1,0 +1,77 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--代理政策</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<!--<script type="text/javascript" src="script/common.js"></script>-->
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(2).find("a").addClass("navThis");
+	$(".navInfo li").eq(2).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资优势</span><span class="englishAddress">ADVANTAGES</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">{dede:field name="position"/}</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	 {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--代理政策-->
+        <div class="index3Text1">
+        	<dl>
+            	<dt>营销<br/>支持</dt>
+                <dd>提供专业制作的视频广告宣传片<br/>给代理经销商自己宣传</dd>
+            </dl>
+            <dl>
+            	<dt>广告<br/>支持</dt>
+                <dd>有计划的在公共媒体上投放广告，大量的广告投放<br/>使信息接触的到位率全面提升</dd>
+            </dl>
+            <dl>
+            	<dt>推广<br/>支持</dt>
+                <dd>长期合作电视台、报刊及门户网站，<br/>多种推广渠道，整套专业营销计划。</dd>
+            </dl>
+            <dl>
+            	<dt>服务<br/>支持</dt>
+                <dd>满足客户服务需求和保护客户经营权益，<br/>全程跟进客户需求。</dd>
+            </dl>
+            <dl>
+            	<dt>区域<br/>保护</dt>
+                <dd>鼓励加盟商拓展区域内区域外发展，<br/>扩大连锁经营范围，予以丰厚奖励。</dd>
+            </dl>
+            <dl>
+            	<dt>会议<br/>支持</dt>
+                <dd>线上商城、手机微店，提供线上订单，<br/>线下送货，收益归属加盟店</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 -->
+</body>
+</html>

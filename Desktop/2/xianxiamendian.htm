@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--线下门店</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(3).find("a").addClass("navThis");
+	$(".navInfo li").eq(3).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>盈利模式</span><span class="englishAddress">MODEL</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">盈利模式</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	<li><a href="yinglimoshi.html">盈利模式</a></li>
+                {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--线下门店-->
+        <div class="line">
+            <h2 id="companyTitle">帝诗卡特线下实体店经营模式：会员+折扣</h2>
+            <p class="lineTitle">千城万店  行业翘楚规模领先</p>
+            <p>帝诗卡特从2015年起，以"整店输出"的模式在全国拓展进口商品会员加盟连锁业务，并逐渐形成从沿海到内地，从一线大城市到二、三线中小城市渗透的态势，品牌覆盖率逐年提升，品牌美誉度更是有口皆碑。目前，帝诗卡特进口商品折扣店已有数百家，市场规模和品牌扩张都遥遥领先于同行，其纵横捭阖之势，绝对的行业翘楚。</p>
+            <p class="linePic"><img src="{dede:global.cfg_templets_skin/}/images/model/Line_01.jpg" width="1184" height="348"></p>
+            <p class="lineTitle">"诚信互惠，共创辉煌",为所有投资经营者提供力所能及的服务，给予最大力度的扶持：</p>
+            <p>1、提供全套开店经营流程，包括：店面的选址参考，商圈的保护，人员培训，店面设置（门面设计、内部摆设、统一制服、商标等）统一的广告，标准化的销售方式，持续的经营管理辅导等等。</p>
+            <p>2、"整店输出"的开店模式使外行者能够在较短的期间内即可创业，在不影响品牌发展的前提下，尽量为投资者着想，降低加入的门槛，省却新手不少的摸索时间。</p>
+            <p>3、总部统一进货，统一配送，统一促销，统一规划，省却成本。
+</p>
+            <p>4、消费趋势的掌握，新产品研发、引进、推广均由总部代劳。</p>
+            <p>5、创业的成功比例大为提高，专营店可以依靠总部以较少的资金和人力有更多更快的机会提升业绩。</p>
+            <p>6、市场督导人员会不定期检查、监督和指导各个加盟店，让加盟店在统一的形象、服务规范、销售模式、运营模式下健康快速发展。</p>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--联网管理</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(2).find("a").addClass("navThis");
+	$(".navInfo li").eq(2).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资优势</span><span class="englishAddress">ADVANTAGES</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资优势</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	 {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--联网管理-->
+        <div class="networking">
+            <h2 id="companyTitle" style="color:#dd0330">联网管理<br /><span>数据实时反馈，随时弥补经营短板    销售系统联网，店面效益成倍增长</span></h2>
+            <p class="networking1">优秀的ERP供应链保障体系，实现对整条供应链的有效管理：从原材料资源管理、分销管理、库存控制管理、采购管理、仓储管理、直至终端销售管理等；销售联网功能，可对销售数量、单价、金额、利润、绩效、客户服务做出全面的分析，对节假日销售效果和客户购买行为做出客观评估。不但可以实现终端销售管理，会员管理，最终还可以实现对整体营销的管理，第一时间弥补销售短板，实现效益的飞跃提升。</p>
+            <p class="networking2">
+            	<img src="{dede:global.cfg_templets_skin/}/images/advantages/networking_01.jpg" width="431" height="388">
+            </p>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

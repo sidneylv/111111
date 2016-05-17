@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--客户管理</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(2).find("a").addClass("navThis");
+	$(".navInfo li").eq(2).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资优势</span><span class="englishAddress">ADVANTAGES</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资优势</a></p>
+        </div>
+        <div class="addressNavBottom">
+             <ul class="thishtmlNav">
+            	 {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--客户管理-->
+        <div class="customer">
+            <h2 id="companyTitle">客户管理</h2>
+            <div class="customerText">
+            	<p>品牌的竞争归根结底是服务的竞争，帝诗卡特将满足广大客户不断提高的服务需求和保护客户经营权益的服务工作纳入到公司的整体战略中去布置和落实，建立完善的客户关系管理体系</p>
+            </div>
+            <div class="customerText">
+            	<dl class="customerLeft">
+                	<dt class="customer1"><img src="{dede:global.cfg_templets_skin/}/images/advantages/customer_01.jpg" width="407" height="233"></dt>
+                    <dd class="customer2">实行一对一的全程用心服务</dd>
+                </dl>
+                <dl class="customerRight">
+                	<dt class="customer3"><img src="{dede:global.cfg_templets_skin/}/images/advantages/customer_02.jpg" width="318" height="233"></dt>
+                    <dd class="customer4">利用专门的客服OA和ERP系统，全程跟进客户运营所需</dd>
+                </dl>
+            </div>
+            <div class="customerText">
+            	<dl class="customerLeft">
+                	<dt class="customer5">开设客户留言板，悉心听取客户意见和建议</dt>
+                    <dd class="customer6"><img src="{dede:global.cfg_templets_skin/}/images/advantages/customer_03.jpg" width="386" height="198"></dd>
+                </dl>
+                <dl class="customerRight">
+                	<dt class="customer7">不断提高的服务需求和保护客户经营权益的服务</dt>
+                    <dd class="customer8"><img src="{dede:global.cfg_templets_skin/}/images/advantages/customer_04.jpg" width="326" height="198"></dd>
+                </dl>
+            </div>
+            <div class="customerText">
+            	<p>让帝诗卡特的客户服务和客户管理做得尽善尽美。</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+</body>
+</html>

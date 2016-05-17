@@ -1,0 +1,141 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--产品中心</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(1).find("a").addClass("navThis");
+	$(".navInfo li").eq(1).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+{dede:include filename="header.htm"/}
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>产品中心</span><span class="englishAddress">PRODUCTS</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">产品中心</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav thisMoreNav">
+            	{dede:channel type='son' currentstyle="<li class="htmlthisNav">~typename~</li>"}
+                <li>[field:typename/]</li>
+				{/dede:channel}				   
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text1">
+	<div class="text1Info">
+    	<!--进口食品-->
+        <div class="text1Text">
+            <dl>
+          {dede:arclist typeid='2'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+            </dl>
+        </div>
+        
+        <!--进口饮料-->
+        <div class="text1Text" style="display:none">
+            <dl>
+                {dede:arclist typeid='29'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+            </dl>
+        </div>
+        
+        <!--进口酒水-->
+        <div class="text1Text" style="display:none">
+            <dl>
+             {dede:arclist typeid='30'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+            </dl>
+        </div>
+        
+        <!--日化用品-->
+        <div class="text1Text" style="display:none">
+		   <dl>
+            {dede:arclist typeid='31'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+			</dl>
+        </div>
+        
+        <!--生活家居-->
+        <div class="text1Text" style="display:none">
+            <dl>
+                {dede:arclist typeid='32'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+			</dl>
+        </div>
+        
+        <!--母婴用品-->
+        <div class="text1Text" style="display:none">
+                       <dl>
+                {dede:arclist typeid='33'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+			</dl>
+        </div>
+        
+        <!--调味品-->
+        <div class="text1Text" style="display:none">
+                       <dl>
+                {dede:arclist typeid='34'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+			</dl>
+        </div>
+        
+        <!--礼品礼盒-->
+        <div class="text1Text" style="display:none">
+          <dl>
+                {dede:arclist typeid='35'}	
+                <dt><a href="[field:arcurl/]">[field:image/]</a></dt>
+                <dd><a href="[field:arcurl/]">[field:title/]</a></dd>
+                <p class="productInfo"><span class="productInfo1">原装<br/>进口</span><span class="productInfo2">新品<br/>尝鲜</span></p>
+			{/dede:arclist}
+			</dl>
+        </div> 
+    </div>
+</div>
+   <div class="dede_pages">
+				   <ul class="pagelist">
+					{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="6"/}
+				   </ul>
+				</div>	
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 --> 
+ 
+</body>
+</html>

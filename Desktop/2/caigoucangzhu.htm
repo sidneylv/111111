@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--采购仓储物流</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(2).find("a").addClass("navThis");
+	$(".navInfo li").eq(2).siblings().removeClass("navThis");
+})
+</script>
+</head>
+<body>
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>投资优势</span><span class="englishAddress">ADVANTAGES</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">投资优势</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	 {dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--采购仓储物流-->
+        <div class="purchase">
+            <h2 id="companyTitle" style="color:#dab568">全球直采＋规模采购＋口岸发货＝低成本＋低价位</h2>
+            <div class="purchaseText">
+            	<dl class="purchaseLeft purchaseLeft1">
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/about/honor_01.jpg" width="405" height="231"></dt>
+                    <dd>英国帝诗卡特集团在全球设有<span>120多个直采机<br/>构</span></dd>
+                </dl>
+                <dl class="purchaseRight purchaseRight1">
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/about/honor_02.jpg" width="317" height="231"></dt>
+                    <dd>与海外上千个生产厂家、大型批发商达成战略合作，建立起<span>"产地直供"的供货关系，</span>形成了完善的供应链体系。</dd>
+                </dl>
+            </div>
+            <div class="purchaseText">
+            	<p class="purchaseLeft purchaseLeft2">帝诗卡特在上海外高桥保税区设有免税仓库</p>
+                <p class="purchaseRight purchaseRight2">从口岸直接发货至门店，中间不设分销层，有效降低了成本与价格</p>
+            </div>
+            <div class="purchaseText">
+            	<dl class="purchaseLeft purchaseLeft3">
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/about/honor_03.jpg" width="242" height="197"></dt>
+                    <dd><span>与ERP系统无缝对接，</span>从而能够快捷、准确地完成分拣与配送,确保货品及时到达加盟商和消费者手中。</dd>
+                </dl>
+                <dl class="purchaseRight purchaseRight3">
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/about/honor_04.jpg" width="236" height="197"></dt>
+                    <dd>
+                    	<p class="purchaseRight3one">帝诗卡特囊括全球优质、热销产品，汇聚8大类、一万多个品种，全线满足顾客需求</p>
+                    	<p><img src="{dede:global.cfg_templets_skin/}/images/about/honor_05.jpg" width="177" height="102"><img src="{dede:global.cfg_templets_skin/}/images/about/honor_06.jpg" width="172" height="102"></p>    
+                    </dd>
+                </dl>
+            </div>
+            <p class="purchase2">帝诗卡特所有进口商品全部通过国家出入境检验检疫、均可追溯商品来源，正品保障，安全可靠。</p>
+            <p class="purchase3"><img src="{dede:global.cfg_templets_skin/}/images/about/honor_07.jpg" width="168" height="165"><img src="{dede:global.cfg_templets_skin/}/images/about/honor_08.jpg" width="154" height="165"></p>
+        </div>
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 -->
+</body>
+</html>

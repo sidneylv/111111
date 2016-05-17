@@ -1,0 +1,682 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特首页</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/common.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}script/jqFancyTransitions.1.8.min.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}script/main.js"></script>
+<script type="text/javascript">
+/* ==== slider nameSpace ==== */
+var slider = function() {
+	/* ==== private methods ==== */
+	function getElementsByClass(object, tag, className) {
+		var o = object.getElementsByTagName(tag);
+		for ( var i = 0, n = o.length, ret = []; i < n; i++) {
+			if (o[i].className == className) ret.push(o[i]);
+		}
+		if (ret.length == 1) ret = ret[0];
+		return ret;
+	}
+	function setOpacity (obj,o) {
+		if (obj.filters) obj.filters.alpha.opacity = Math.round(o);
+		else obj.style.opacity = o / 100;
+	}
+	/* ==== Slider Constructor ==== */
+	function Slider(oCont, speed, iW, iH, oP) {
+		this.slides = [];
+		this.over   = false;
+		this.S      = this.S0 = speed;
+		this.iW     = iW;
+		this.iH     = iH;
+		this.oP     = oP;
+		this.oc     = document.getElementById(oCont);
+		this.frm    = getElementsByClass(this.oc, 'div', 'slide');
+		this.NF     = this.frm.length;
+		this.resize();
+		for (var i = 0; i < this.NF; i++) {
+			this.slides[i] = new Slide(this, i);
+		}
+		this.oc.parent = this;
+		this.view      = this.slides[0];
+		this.Z         = this.mx;
+		/* ==== on mouse out event ==== */
+		this.oc.onmouseout = function () {
+			this.parent.mouseout();
+			return false;
+		}
+	}
+	Slider.prototype = {
+		/* ==== animation loop ==== */
+		run : function () {
+			this.Z += this.over ? (this.mn - this.Z) * .5 : (this.mx - this.Z) * .5;
+			this.view.calc();
+			var i = this.NF;
+			while (i--) this.slides[i].move();
+		},
+		/* ==== resize  ==== */
+		resize : function () {
+			this.wh = this.oc.clientWidth;
+			this.ht = this.oc.clientHeight;
+			this.wr = this.wh * this.iW;
+			this.r  = this.ht / this.wr;
+			this.mx = this.wh / this.NF;
+			this.mn = (this.wh * (1 - this.iW)) / (this.NF - 1);
+		},
+		/* ==== rest  ==== */
+		mouseout : function () {
+			this.over      = false;
+			setOpacity(this.view.img, this.oP);
+		}
+	}
+	/* ==== Slide Constructor ==== */
+	Slide = function (parent, N) {
+		this.parent = parent;
+		this.N      = N;
+		this.x0     = this.x1 = N * parent.mx;
+		this.v      = 0;
+		this.loaded = false;
+		this.cpt    = 0;
+		this.start  = new Date();
+		this.obj    = parent.frm[N];
+		this.txt    = getElementsByClass(this.obj, 'div', 'text');
+		this.img    = getElementsByClass(this.obj, 'img', 'diapo');
+		this.bkg    = document.createElement('div');
+		this.bkg.className = 'backgroundText';
+		this.obj.insertBefore(this.bkg, this.txt);
+		if (N == 0) this.obj.style.borderLeft = 'none';
+		this.obj.style.left = Math.floor(this.x0) + 'px';
+		setOpacity(this.img, parent.oP);
+		/* ==== mouse events ==== */
+		this.obj.parent = this;
+		this.obj.onmouseover = function() {
+			this.parent.over();
+			return false;
+		}
+	}
+	Slide.prototype = {
+		/* ==== target positions ==== */
+		calc : function() {
+			var that = this.parent;
+			// left slides
+			for (var i = 0; i <= this.N; i++) {
+				that.slides[i].x1 = i * that.Z;
+			}
+			// right slides
+			for (var i = this.N + 1; i < that.NF; i++) {
+				that.slides[i].x1 = that.wh - (that.NF - i) * that.Z;
+			}
+		},
+		/* ==== HTML animation : move slides ==== */
+		move : function() {
+			var that = this.parent;
+			var s = (this.x1 - this.x0) / that.S;
+			/* ==== lateral slide ==== */
+			if (this.N && Math.abs(s) > .5) {
+				this.obj.style.left = Math.floor(this.x0 += s) + 'px';
+			}
+			/* ==== vertical text ==== */
+			var v = (this.N < that.NF - 1) ? that.slides[this.N + 1].x0 - this.x0 : that.wh - this.x0;
+			if (Math.abs(v - this.v) > .5) {
+				this.bkg.style.top = this.txt.style.top = Math.floor(2 + that.ht - (v - that.Z) * that.iH * that.r) + 'px';
+				this.v = v;
+				this.cpt++;
+			} else {
+				if (!this.pro) {
+					/* ==== adjust speed ==== */
+					this.pro = true;
+					var tps = new Date() - this.start;
+					if(this.cpt > 1) {
+						that.S = Math.max(2, (28 / (tps / this.cpt)) * that.S0);
+					}
+				}
+			}
+			if (!this.loaded) {
+				if (this.img.complete) {
+					this.img.style.visibility = 'visible';
+					this.loaded = true;
+				}
+			}
+		},
+		/* ==== light ==== */
+		over : function () {
+			this.parent.resize();
+			this.parent.over = true;
+			setOpacity(this.parent.view.img, this.parent.oP);
+			this.parent.view = this;
+			this.start = new Date();
+			this.cpt = 0;
+			this.pro = false;
+			this.calc();
+			setOpacity(this.img, 100);
+		}
+	}
+	/* ==== public method - script initialization ==== */
+	return {
+		init : function() {
+			// create instances of sliders here
+			// parameters : HTMLcontainer name, speed (2 fast - 20 slow), Horizontal ratio, vertical text ratio, opacity
+			this.s1 = new Slider("slider", 12, 1.84/3, 1/3.2, 70);
+			setInterval("slider.s1.run();", 16);
+		}
+	}
+}();
+
+</script>
+
+</head>
+
+<body>
+<!--<div id="commenHead"></div>-->
+    <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="bannerbox">
+    <div class="banner" id="gallery">
+        <img src="images/index/index_02.jpg" width="1920" height="694">
+        <img src="images/index/index_02.jpg" width="1920" height="694">
+        <img src="images/index/index_02.jpg" width="1920" height="694">
+    </div>
+</div>
+<div id="saoyisao">
+	<div class="saoyisaoInfo">
+        <span class="saoyisaoClose"></span>
+        <img src="images/index/saoyisao.png" width="367" height="240">\
+    </div>
+</div>
+
+<div id="index1">
+	<div class="index1Info">
+    	<div class="index1Top">
+        	<dl>
+            	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_03.jpg" width="102" height="108"></dt>
+                <dd><span>百年历史</span> 国际知名品牌 享誉全球</dd>
+            </dl>
+            <dl>
+            	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_04.jpg" width="104" height="108"></dt>
+                <dd><span>0元加盟 整店输出</span> 5日拎包开店 </dd>
+            </dl>
+            <dl>
+            	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_05.jpg" width="102" height="114"></dt>
+                <dd><span>8大种类 万种知名进口商品</span> 畅销世界</dd>
+            </dl>
+            <dl>
+            	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_06.jpg" width="104" height="114"></dt>
+                <dd><span>O2O跨境模式</span> 来源清晰可查 全渠道经销</dd>
+            </dl>
+        </div>
+        <div class="indexTitle">
+        	<h2>您还在为找不到值得信赖的进口商品供应商而烦恼吗？</h2>
+            <p>YOU STILL CAN NOT FIND A TRUSTEORTHY SUPPLIER OF IMPORTED GOODS AND TROUBLE</p>
+        </div>
+        <div class="index1Center">
+        	<p class="index1CenterPic"><img src="{dede:global.cfg_templets_skin/}/images/index/index_08.jpg" width="456" height="478"></p>
+            <div class="index1CenterText">
+            	<ul>
+                	<li class="index1CenterList1">代理的品牌实力不足，不能满足市场需求？</li>
+                    <li class="index1CenterList2">代理的产品缺乏知名度，无法得到消费者认可，商品滞销？</li>
+                    <li class="index1CenterList3">商品质量无保证，无法追溯商品来源？</li>
+                    <li class="index1CenterList4">政策支持落后 无法消除后顾之忧？</li>
+                </ul>
+                <p class="index1CenterTitle">帝诗卡特</p>
+                <p class="index1CenterInfo">帝诗卡特所以进口商品全部通过国家出入境检验检疫、<br />均可追溯商品来源，<span>正品保障，安全可靠。</span></p>
+                <p class="index1CenterTel">帝诗卡特咨询电话：<span>400-136-1088</span></p>
+            </div>
+        </div>
+        <div class="index1Bottom">
+        	<h3>进口商品靠品牌帝诗卡特教你轻松致富</h3>
+            <div class="index1BottomInfo">
+            	<dl>
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_10.jpg" width="392" height="424"></dt>
+                    <dd>百年历史<br/>千家门店<br/>国际知名品牌</dd>
+                </dl>
+                <dl style="margin-left:10px;  margin-right:10px;">
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_11.jpg" width="392" height="424"></dt>
+                    <dd>口岸发货<br/>不设分销<br/>来源可溯质量保证</dd>
+                </dl>
+                <dl>
+                	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index_12.jpg" width="392" height="424"></dt>
+                    <dd>贴心服务<br/>全程支持<br/>24小时不断吸金</dd>
+                </dl>
+            </div>
+            <div class="index1BottomTitle">
+            	<h4><a href="#">进口商品火爆中国，如何能成为成功典范之一？</a></h4>
+                <p><input type="button" value="在线咨询客服" class="index1Button"></p>
+            </div>
+            <div class="index1BottomTetle">
+            	<p>全国免费招商热线<br/><span>400-136-1088</span></p>
+            </div>
+        </div>
+	</div>    
+</div>
+
+<!--第一部分结束-->
+    
+<div id="index2">
+    <div class="index2Info">
+    	<div class="index2Text">
+        	<h2 class="index2Title"><span>加盟帝诗卡特</span><span style="margin-left:240px;">个人创业</span></h2>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt>专业团队选址评估，分析商圈环境，<span class="colorOne">确定最佳地址</span></dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">店铺选址</p>
+                <dl class="index2TwoText">
+                	<dt>一片茫然，商圈环境，竞争压力一无所知，选址易出错</dt>
+                    <dd class="starFour colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt><span class="colorOne">量身设计装修方案，</span>提供相关图纸和终端形象物料</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">设计装修</p>
+                <dl class="index2TwoText">
+                	<dt>装修风格难以确定，设计方案反复无常，施工建设一拖再拖</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt><span class="colorOne">提供全面专业技能培训，</span>注重实战和理论性结合</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">职业素质</p>
+                <dl class="index2TwoText">
+                	<dt>雇员职业素质较低，不了解行业详情，营销知识缺乏</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt><span class="colorOne">专业市场督导</span>团队不定期巡店，下店指导、培训</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">巡店指导</p>
+                <dl class="index2TwoText">
+                	<dt>全靠个人，劳心劳力，不见成效</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt>长期合作电视台、报刊及门户网站，<span class="colorOne">提升品牌知名度</span></dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">广告推广</p>
+                <dl class="index2TwoText">
+                	<dt>推广渠道缺乏、推广成本高，品牌知名度无法上升</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+            <div class="index2Cent">
+            	<dl class="index2OneText">
+                	<dt><span class="colorOne">ERP店铺管理，</span>实时把握专业数据，迅速弥补短板</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+                <p class="index2CentTitle">经营管理</p>
+                <dl class="index2TwoText">
+                	<dt>经营参照少，短板发现过程长，创业效益低</dt>
+                    <dd class="starFive colorOne">客户满意指数：</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--第二部分结束-->
+    
+<div id="index3">
+	<div class="index3Info">
+		<div class="indexTitle">
+        	<h2>六大代理政策  为您创富之路保驾护航？</h2>
+            <p>SIX AGENCY POLICY FOR YOUR ROAD TO WEALTH ESCORT</p>
+        </div>
+        <div class="index3Text1">
+        	<dl>
+            	<dt>营销<br/>支持</dt>
+                <dd>提供专业制作的视频广告宣传片<br/>给代理经销商自己宣传</dd>
+            </dl>
+            <dl>
+            	<dt>广告<br/>支持</dt>
+                <dd>有计划的在公共媒体上投放广告，大量的广告投放<br/>使信息接触的到位率全面提升</dd>
+            </dl>
+            <dl>
+            	<dt>推广<br/>支持</dt>
+                <dd>长期合作电视台、报刊及门户网站，<br/>多种推广渠道，整套专业营销计划。</dd>
+            </dl>
+            <dl>
+            	<dt>服务<br/>支持</dt>
+                <dd>满足客户服务需求和保护客户经营权益，<br/>全程跟进客户需求。</dd>
+            </dl>
+            <dl>
+            	<dt>区域<br/>保护</dt>
+                <dd>鼓励加盟商拓展区域内区域外发展，<br/>扩大连锁经营范围，予以丰厚奖励。</dd>
+            </dl>
+            <dl>
+            	<dt>会议<br/>支持</dt>
+                <dd>线上商城、手机微店，提供线上订单，<br/>线下送货，收益归属加盟店</dd>
+            </dl>
+        </div>
+        
+        <div class="indexTitle">
+        	<h2>加盟流程</h2>
+            <p>JOINING PROCESS</p>
+        </div>
+        <div class="index3Text2">
+        	<p><span style=" margin-right:83px;">申请<br/>加盟</span><span style=" margin-right:73px;">合作<br/>签约</span><span style=" margin-right:65px;">指导<br/>选店</span><span style=" margin-right:65px;">技术<br/>培训</span><span style=" margin-right:55px;">正式<br/>运营</span><span>后续<br/>指导</span></p>
+        </div>
+        <div class="index3Text3">
+        	<div class="index3Text3Left">
+            	<span>海乃百川，货源稳定，商品多样</span>
+                <span>0元加盟，整店输出，不见风险</span>
+                <span>O2O模式，完美体验，创新先锋</span>
+                <span>十大盈利，不断吸金，钱景无忧</span>
+            </div>
+            <div class="index3Text3Right">
+            	<p><input type="button" value="点击咨询" class="index3Button"></p>
+                <p class="index3Tel">招商热线：<span>400-136-1088</span></p>
+            </div>
+        </div>
+        
+        <div class="indexTitle">
+        	<h2>全国战略合作品牌</h2>
+            <p>NATIONAL STRATEGIC BRAND</p>
+        </div>
+        <div class="index3Text4">
+        	<ul class="index3Text4Title">
+            	<li class="index3Text4This">进口食品</li>
+                <li>进口酒水</li>
+                <li>进口饮料</li>
+                <li>日化用品</li>
+                <li>母婴用品</li>
+            </ul>
+            <div class="index3Text4Text">
+            	<div class="index3Text4Info">
+                	<p class="index3Text4Left"><img src="{dede:global.cfg_templets_skin/}/images/index/index3_4.jpg" width="307" height="188"></p>
+                    <div class="index3Text4Right">
+                    	<p class="index3Text4Pic1"></p>
+                        <p class="index3Text4Pic2"></p>
+                        <p class="index3Text4Pic3"></p>
+                        <p class="index3Text4Pic4"></p>
+                        <p class="index3Text4Pic5"></p>
+                        <p class="index3Text4Pic6"></p>
+                        <p class="index3Text4Pic7"></p>
+                        <p class="index3Text4Pic8"></p>
+                        <p class="index3Text4Pic9"></p>
+                        <p class="index3Text4Pic10"></p>
+                        <p class="index3Text4Pic11"></p>
+                        <p class="index3Text4Pic12"></p>
+                        <p class="index3Text4Pic13"></p>
+                        <p class="index3Text4Pic14"></p>
+                        <p class="index3Text4Pic15"></p>
+                        <p class="index3Text4Pic16"></p>
+                        <p class="index3Text4Pic17"></p>
+                        <p class="index3Text4Pic18"></p>
+                        <p class="index3Text4Pic19"></p>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="index3Text4Info" style="display:none">
+                	<p class="index3Text4Left">进口酒水</p>
+                    <div class="index3Text4Right">
+                    	<p class="index3Text4Pic1"></p>
+                        <p class="index3Text4Pic2"></p>
+                        <p class="index3Text4Pic3"></p>
+                        <p class="index3Text4Pic4"></p>
+                        <p class="index3Text4Pic5"></p>
+                        <p class="index3Text4Pic6"></p>
+                        <p class="index3Text4Pic7"></p>
+                        <p class="index3Text4Pic8"></p>
+                        <p class="index3Text4Pic9"></p>
+                        <p class="index3Text4Pic10"></p>
+                        <p class="index3Text4Pic11"></p>
+                        <p class="index3Text4Pic12"></p>
+                        <p class="index3Text4Pic13"></p>
+                        <p class="index3Text4Pic14"></p>
+                        <p class="index3Text4Pic15"></p>
+                        <p class="index3Text4Pic16"></p>
+                        <p class="index3Text4Pic17"></p>
+                        <p class="index3Text4Pic18"></p>
+                        <p class="index3Text4Pic19"></p>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="index3Text4Info" style="display:none">
+                	<p class="index3Text4Left">进口饮料</p>
+                    <div class="index3Text4Right">
+                    	<p class="index3Text4Pic1"></p>
+                        <p class="index3Text4Pic2"></p>
+                        <p class="index3Text4Pic3"></p>
+                        <p class="index3Text4Pic4"></p>
+                        <p class="index3Text4Pic5"></p>
+                        <p class="index3Text4Pic6"></p>
+                        <p class="index3Text4Pic7"></p>
+                        <p class="index3Text4Pic8"></p>
+                        <p class="index3Text4Pic9"></p>
+                        <p class="index3Text4Pic10"></p>
+                        <p class="index3Text4Pic11"></p>
+                        <p class="index3Text4Pic12"></p>
+                        <p class="index3Text4Pic13"></p>
+                        <p class="index3Text4Pic14"></p>
+                        <p class="index3Text4Pic15"></p>
+                        <p class="index3Text4Pic16"></p>
+                        <p class="index3Text4Pic17"></p>
+                        <p class="index3Text4Pic18"></p>
+                        <p class="index3Text4Pic19"></p>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="index3Text4Info" style="display:none">
+                	<p class="index3Text4Left">日化用品</p>
+                    <div class="index3Text4Right">
+                    	<p class="index3Text4Pic1"></p>
+                        <p class="index3Text4Pic2"></p>
+                        <p class="index3Text4Pic3"></p>
+                        <p class="index3Text4Pic4"></p>
+                        <p class="index3Text4Pic5"></p>
+                        <p class="index3Text4Pic6"></p>
+                        <p class="index3Text4Pic7"></p>
+                        <p class="index3Text4Pic8"></p>
+                        <p class="index3Text4Pic9"></p>
+                        <p class="index3Text4Pic10"></p>
+                        <p class="index3Text4Pic11"></p>
+                        <p class="index3Text4Pic12"></p>
+                        <p class="index3Text4Pic13"></p>
+                        <p class="index3Text4Pic14"></p>
+                        <p class="index3Text4Pic15"></p>
+                        <p class="index3Text4Pic16"></p>
+                        <p class="index3Text4Pic17"></p>
+                        <p class="index3Text4Pic18"></p>
+                        <p class="index3Text4Pic19"></p>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="index3Text4Info" style="display:none">
+                	<p class="index3Text4Left">母婴用品</p>
+                    <div class="index3Text4Right">
+                    	<p class="index3Text4Pic1"></p>
+                        <p class="index3Text4Pic2"></p>
+                        <p class="index3Text4Pic3"></p>
+                        <p class="index3Text4Pic4"></p>
+                        <p class="index3Text4Pic5"></p>
+                        <p class="index3Text4Pic6"></p>
+                        <p class="index3Text4Pic7"></p>
+                        <p class="index3Text4Pic8"></p>
+                        <p class="index3Text4Pic9"></p>
+                        <p class="index3Text4Pic10"></p>
+                        <p class="index3Text4Pic11"></p>
+                        <p class="index3Text4Pic12"></p>
+                        <p class="index3Text4Pic13"></p>
+                        <p class="index3Text4Pic14"></p>
+                        <p class="index3Text4Pic15"></p>
+                        <p class="index3Text4Pic16"></p>
+                        <p class="index3Text4Pic17"></p>
+                        <p class="index3Text4Pic18"></p>
+                        <p class="index3Text4Pic19"></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--第三部分结束-->
+    
+<div id="index4">
+	<div class="index4Info">
+    	<div class="indexTitle indexTitle2">
+        	<h2>他们的成功 你也可以复制</h2>
+            <p>THEIR SUCCESS YOU CAN ALSO COPY</p>
+        </div>
+        <div class="index4Text">
+        	<div class="index4Cont">
+            	<p class="index4TextPic"><img src="{dede:global.cfg_templets_skin/}/images/index/index4_2.jpg" /></p>
+                <h4>代理商：刘总</h4>
+                <p class="index4ContText">当初拿着10万的创业资金，看着进口商品市场火热，就选择了加盟帝诗卡特，没想短短几年...</p>
+                <p class="index4Button"><a href="#">点击查看</a></p>
+            </div>
+            <div class="index4Cont" style="margin-left:35px; margin-right:35px;">
+            	<p class="index4TextPic"><img src="{dede:global.cfg_templets_skin/}/images/index/index4_2.jpg" /></p>
+                <h4>代理商：刘总</h4>
+                <p class="index4ContText">当初拿着10万的创业资金，看着进口商品市场火热，就选择了加盟帝诗卡特，没想短短几年...</p>
+                <p class="index4Button"><a href="#">点击查看</a></p>
+            </div>
+            <div class="index4Cont">
+            	<p class="index4TextPic"><img src="{dede:global.cfg_templets_skin/}/images/index/index4_2.jpg" /></p>
+                <h4>代理商：刘总</h4>
+                <p class="index4ContText">当初拿着10万的创业资金，看着进口商品市场火热，就选择了加盟帝诗卡特，没想短短几年...</p>
+                <p class="index4Button"><a href="#">点击查看</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--第四部分结束-->
+    
+<div id="index5">
+	<div class="index5Info">
+    	<div class="index5Left">
+        	<h3>走进帝诗卡特</h3>
+            <dl class="index5BigText">
+            	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_2.jpg"></dt>
+                <dd>
+                	<p>经过近百年的发展，帝诗卡特在欧洲形成了三千多家店的连锁经营规模，已在全球100多个国家设立了直采机构，具备了强大的全球采购能力。帝诗卡特落户于上海......</p>
+                    <p style="text-indent:0;"><a href="#">了解详情</a></p>
+                </dd>
+            </dl>
+            <div class="index5Text">
+            	<div class="index5TextInfo">
+                	<dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_3.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_4.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_5.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                </div>
+                <div class="index5TextInfo" style="display:none;">
+                	<dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_5.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_4.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_3.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                </div>
+                <div class="index5TextInfo" style="display:none;">
+                	<dl>
+                    	<dt><img src="{dede:global.cfg_templets_skin/}/images/index/index5_3.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="images/index/index5_5.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                    <dl>
+                    	<dt><img src="images/index/index5_4.jpg"></dt>
+                        <dd>成功加盟店铺</dd>
+                    </dl>
+                </div>
+                <p class="index5TextLabel1">
+                	<span class="index5Ioc index5IocThis"></span><span class="index5Ioc"></span><span class="index5Ioc"></span>
+                </p>
+            </div>
+        </div>
+        <div class="index5Right">
+        	<h3>荣誉证书</h3>
+            <div class="index5Text2">
+            	<div class="index5Text2Info">
+                	<img src="{dede:global.cfg_templets_skin/}/images/index/index5_7.jpg">
+                    <img src="{dede:global.cfg_templets_skin/}/images/index/index5_8.jpg">
+                </div>
+                <div class="index5Text2Info" style="display:none;">
+                	<img src="{dede:global.cfg_templets_skin/}/images/index/index5_7.jpg">
+                    <img src="{dede:global.cfg_templets_skin/}/images/index/index5_7.jpg">
+                </div>
+                <div class="index5Text2Info" style="display:none;">
+                	<img src="{dede:global.cfg_templets_skin/}/images/index/index5_8.jpg">
+                    <img src="{dede:global.cfg_templets_skin/}/images/index/index5_8.jpg">
+                </div>
+                <p class="index5TextLabel2">
+                	<span class="index5Ioc index5IocThis"></span><span class="index5Ioc"></span><span class="index5Ioc"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="indexTitle" style="margin-bottom:55px; margin-top:120px;">
+        <h2>无忧好项目，轻松实现创富梦想</h2>
+        <p style="font-size:24px;">成功创业，从一个电话开始</p>
+    </div>
+</div>
+<!--第五部分结束-->
+    
+<div id="index6">
+	<div class="index6Info">
+    	<div class="index6Left">
+        	<p class="index6Left1">帝诗卡特【新品品鉴会】火热召开<br />结合本次契机，针对前20位加盟商退出优惠政策：</p>
+            <p class="index6Left2">1.免收加盟费</p>
+            <p class="index6Left2">2.一万元开业大礼包额外相赠</p>
+            <p class="index6Left3">如果您对该项目感兴趣请立即留言<br />或拨打全国招商电话：</p>
+            <p class="index6Left4">400-136-1088</p>
+            <p class="index6Left5">上千件大礼免费赠送，快来申请加盟吧！</p>
+        </div>
+        <div class="index6Right">
+        	<p class="index6Right1">请一定填写您的真实信息，<br />以便我们招商经理第一时间联系到你！</p>
+            <div class="index6Right2">
+            	<p><label>联 系 人：</label><input type="text" value="" /></p>
+                <p><label>联系电话：</label><input type="text" value="" /></p>
+                <p><label>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label><input type="text" value="" /></p>
+                <p style="height:150px;"><label>备&nbsp;&nbsp;&nbsp;&nbsp;注：</label><textarea></textarea></p>
+                <p class="index6Right2Button"><input type="button" value="提交" /><input type="button" value="重置" /></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--第六部分结束-->
+
+<!--<div id="commenFoot"></div>   -->
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 -->
+ 
+</body>
+</html>

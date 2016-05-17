@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帝诗卡特--联系我们</title>
+<link href="{dede:global.cfg_templets_skin/}/css/style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/script/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".navInfo li").eq(6).find("a").addClass("navThis");
+	$(".navInfo li").eq(6).siblings().removeClass("navThis");
+})
+</script>
+</head>
+
+<body>
+ <!-- 头部开始 -->
+ {dede:include filename="header.htm"/}
+    <!-- 头部结束 -->
+<div id="smallbannerbox">
+    <div class="smallbanner">
+    </div>
+</div>
+
+<div id="addressNav">
+	<div class="addressNavInfo">
+    	<div class="addressNavTop">
+        	<h2 class="addressHtml"><span>关于帝诗卡特</span><span class="englishAddress">ABOUT</span></h2>
+            <p class="addressNavText"><span>当前位置：</span><a href="index.html">首页</a><span>&nbsp;|&nbsp;</span><a href="#">关于帝诗卡特</a></p>
+        </div>
+        <div class="addressNavBottom">
+        	<ul class="thishtmlNav">
+            	{dede:channel type='son' currentstyle="<li><a href='~typelink~'>~typename~</a></li>"}
+				   <li><a href="[field:typelink/]" class="htmlthisNav">[field:typename/]</a></li>
+				   {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="text2">
+	<div class="text2Info">
+    	<!--联系我们-->
+        <div class="contactUs">
+            <h2 id="companyTitle">上海帝狄进出口有限公司（上海总部）</h2>
+            <p class="contactUs1"><img src="{dede:global.cfg_templets_skin/}/images/about/contactUs_01.jpg" width="1200" height="339"></p>
+            <p>总部地址:</p>
+            <p>上海市嘉定区银翔路799号南翔财富中心9楼</p>
+            <p>电话：021-69986037、021-69121777</p>
+            <p class="contactUs2"><img src="{dede:global.cfg_templets_skin/}/images/about/contactUs_02.jpg" width="938" height="452"><img src="{dede:global.cfg_templets_skin/}/images/about/contactUs_03.jpg" width="938" height="188"></p>
+        </div>
+        
+    </div>
+</div>
+    <!-- 尾部开始 -->
+ {dede:include filename="footer.htm"/}
+    <!-- 尾部结束 -->  
+</body>
+</html>
